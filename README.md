@@ -600,9 +600,11 @@ This project is licensed under the ISC License — see the [LICENSE](LICENSE) fi
 
 ## 🔗 Related Links
 
+- 🌐 [Live Website](http://worldcup26.ir:3050)
+- 📖 [API Swagger Docs](http://worldcup26.ir:3050/api-docs/)
+- 💻 [GitHub Repository](https://github.com/rezarahiminia/worldcup2026)
 - 🌐 [FIFA Official Website](https://www.fifa.com/fifaplus/en/tournaments/mens/worldcup/canadamexicousa2026)
 - 🏆 [World Cup 2026 Official](https://www.fifa.com/worldcup/)
-- 📖 [API Swagger Docs](http://worldcup26.ir:3050/api-docs/)
 
 ---
 
