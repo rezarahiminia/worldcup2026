@@ -213,7 +213,6 @@ This API includes full **interactive Swagger UI** documentation powered by OpenA
 | **Swagger Version** | OpenAPI 3.0 (`swagger-jsdoc` 6.x + `swagger-ui-express` 5.x) |
 | **API Version** | 1.0.5 |
 | **Dev URL** | [http://localhost:3050/api-docs/](http://localhost:3050/api-docs/) |
-| **Production URL** | [http://worldcup26.ir:3050/api-docs/](http://worldcup26.ir:3050/api-docs/) |
 | **Production (HTTPS)** | [https://worldcup26.ir/api-docs/](https://worldcup26.ir/api-docs/) |
 
 ### How to Use Swagger UI
@@ -494,6 +493,40 @@ Returns all 16 host stadiums.
   "country_en": "United States",
   "capacity": 82500
 }
+```
+
+---
+
+### 🏥 Health Check Endpoints
+
+#### Health Status
+```http
+GET /health
+```
+No authentication required. Returns the health status of the API and database.
+
+**Response Example:**
+```json
+{
+  "status": "healthy",
+  "timestamp": "2026-02-09T12:30:00.000Z",
+  "uptime": 3600,
+  "version": "1.0.5",
+  "environment": "production",
+  "database": {
+    "status": "connected",
+    "name": "worldcup2026"
+  },
+  "memory": {
+    "used": "45 MB",
+    "total": "128 MB"
+  }
+}
+```
+
+**Alternative Endpoint:**
+```http
+GET /api/health
 ```
 
 ---
