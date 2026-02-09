@@ -32,6 +32,7 @@ A comprehensive, open-source REST API providing real-time data for the **2026 FI
 - [Response Codes](#-response-codes)
 - [Contributing](#-contributing)
 - [License](#-license)
+- [Support This Project](#-support-this-project)
 - [Contact & Support](#-contact--support)
 
 ---
@@ -608,7 +609,17 @@ This project is licensed under the ISC License — see the [LICENSE](LICENSE) fi
 
 ---
 
-## 📧 Contact & Support
+## � Support This Project
+
+This API is completely **free and open-source**. If you find it useful, consider supporting its development:
+
+<a href="https://nowpayments.io/donation?api_key=ebc9f078-46a5-413b-a28e-8b4737ec4d18" target="_blank" rel="noreferrer noopener">
+   <img src="https://nowpayments.io/images/embeds/donation-button-black.svg" alt="Crypto donation button by NOWPayments">
+</a>
+
+---
+
+## �📧 Contact & Support
 
 For questions, issues, or suggestions, please open an issue on GitHub.
 
