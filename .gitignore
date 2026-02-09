@@ -1,0 +1,15 @@
+node_modules/
+.history/
+.DS_Store
+.vscode/
+dist/
+build/
+.idea/
+
+# Environment files (contain secrets & credentials)
+.env
+.env.*
+!.env.example
+
+# MongoDB user creation script (contains passwords)
+create-mongodb-user.js

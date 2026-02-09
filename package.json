@@ -1,0 +1,49 @@
+{
+  "name": "worldcup2026-api",
+  "version": "1.0.5",
+  "description": "FIFA World Cup 2026 API - Match schedules, teams, groups, and stadiums",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "set NODE_ENV=development && nodemon index.js",
+    "prod": "set NODE_ENV=production && node index.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon index.js",
+    "start:prod": "cross-env NODE_ENV=production node index.js",
+    "import:all": "node import-groups.js && node import-teams.js && node import-stadiums.js && node import-matches.js",
+    "import:groups": "node import-groups.js",
+    "import:teams": "node import-teams.js",
+    "import:stadiums": "node import-stadiums.js",
+    "import:matches": "node import-matches.js",
+    "test:load": "node load-test.js"
+  },
+  "keywords": [
+    "express",
+    "node",
+    "api",
+    "mongodb"
+  ],
+  "author": "jp2435",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.13.4",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.1",
+    "compression": "^1.8.1",
+    "cors": "^2.8.6",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "express-rate-limit": "^8.2.1",
+    "fs": "0.0.1-security",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.5",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0",
+    "nodemon": "^2.0.15"
+  }
+}
