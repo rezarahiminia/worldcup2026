@@ -1536,17 +1536,16 @@
                         <h4>💰 <span data-i18n="donate_amount">مبلغ کمک (دلار)</span></h4>
                         
                         <div class="amount-buttons">
-                            <button class="amount-btn" data-amount="5">$5</button>
                             <button class="amount-btn selected" data-amount="10">$10</button>
                             <button class="amount-btn" data-amount="25">$25</button>
                             <button class="amount-btn" data-amount="50">$50</button>
                         </div>
                         
                         <div class="custom-amount">
-                            <label data-i18n="donate_custom">یا مبلغ دلخواه (1 تا 100 دلار):</label>
+                            <label data-i18n="donate_custom">یا مبلغ دلخواه (10 تا 100 دلار):</label>
                             <div class="amount-input-wrapper">
                                 <span>$</span>
-                                <input type="number" id="customAmount" min="1" max="100" placeholder="10" value="10">
+                                <input type="number" id="customAmount" min="10" max="100" placeholder="10" value="10">
                             </div>
                         </div>
                         
@@ -1710,7 +1709,7 @@
                 donate_coffee: 'یک قهوه مهمان کنید!',
                 donate_desc: 'این API کاملاً رایگان است. اگر برایتان مفید بود، می‌توانید از توسعه آن حمایت کنید.',
                 donate_amount: 'مبلغ کمک (دلار)',
-                donate_custom: 'یا مبلغ دلخواه (1 تا 100 دلار):',
+                donate_custom: 'یا مبلغ دلخواه (10 تا 100 دلار):',
                 donate_name_ph: 'نام شما (اختیاری)',
                 donate_email_ph: 'ایمیل (اختیاری)',
                 donate_message_ph: 'پیام شما (اختیاری)',
@@ -1785,7 +1784,7 @@
                 donate_coffee: 'Buy us a coffee!',
                 donate_desc: 'This API is completely free. If you find it useful, you can support its development.',
                 donate_amount: 'Donation Amount (USD)',
-                donate_custom: 'Or enter custom amount (1 to 100 USD):',
+                donate_custom: 'Or enter custom amount (10 to 100 USD):',
                 donate_name_ph: 'Your name (optional)',
                 donate_email_ph: 'Email (optional)',
                 donate_message_ph: 'Your message (optional)',
@@ -2199,7 +2198,7 @@
             const donorMessage = document.getElementById('donorMessage').value.trim();
             
             // Validate amount
-            if (amount < 1 || amount > 100) {
+            if (amount < 10 || amount > 100) {
                 showToast(translations[currentLang].error_amount, 'error');
                 return;
             }

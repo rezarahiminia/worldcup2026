@@ -53,7 +53,7 @@ module.exports = (app) => {
      *             properties:
      *               amount:
      *                 type: number
-     *                 minimum: 1
+     *                 minimum: 10
      *                 maximum: 100
      *                 description: Donation amount in USD
      *                 example: 10
@@ -102,10 +102,10 @@ module.exports = (app) => {
             
             // Validate amount
             const amountNum = parseFloat(amount);
-            if (isNaN(amountNum) || amountNum < 1 || amountNum > 100) {
+            if (isNaN(amountNum) || amountNum < 10 || amountNum > 100) {
                 return res.status(400).json({
                     success: false,
-                    error: 'Amount must be between 1 and 100 USD'
+                    error: 'Amount must be between 10 and 100 USD'
                 });
             }
             
@@ -442,7 +442,7 @@ module.exports = (app) => {
                     code: 'usdttrc20',
                     name: 'USDT (TRC20)',
                     network: 'TRON',
-                    min_amount: 1,
+                    min_amount: 10,
                     description: 'Tether USD on TRON network - Fast & Low fees'
                 }
             ]
