@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "set NODE_ENV=development && nodemon index.js",
-    "prod": "set NODE_ENV=production && node index.js",
+    "dev": "set NODE_ENV=development&& nodemon index.js",
+    "prod": "set NODE_ENV=production&& node index.js",
     "start:dev": "cross-env NODE_ENV=development nodemon index.js",
     "start:prod": "cross-env NODE_ENV=production node index.js",
     "import:all": "node import-groups.js && node import-teams.js && node import-stadiums.js && node import-matches.js",
@@ -17,10 +17,22 @@
     "test:load": "node load-test.js"
   },
   "keywords": [
+    "fifa-world-cup-2026",
+    "world-cup-api",
+    "football-api",
+    "soccer-api",
+    "live-scores",
+    "rest-api",
     "express",
     "node",
-    "api",
-    "mongodb"
+    "mongodb",
+    "swagger",
+    "openapi",
+    "jwt-authentication",
+    "real-time-scores",
+    "sports-api",
+    "48-teams",
+    "usa-mexico-canada"
   ],
   "author": "jp2435",
   "license": "ISC",

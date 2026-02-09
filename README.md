@@ -1,24 +1,53 @@
-# ⚽ FIFA World Cup 2026 API
+# ⚽ FIFA World Cup 2026 API — Complete REST API for the Biggest World Cup Ever
+
+<!-- GitHub Visitor Counter -->
+![Visitor Count](https://komarev.com/ghpvc/?username=rezarahiminia-worldcup2026&label=Visitors&color=brightgreen&style=flat-square)
 
 [![Node.js](https://img.shields.io/badge/Node.js-18.x-green?logo=node.js)](https://nodejs.org/)
+[![Express.js](https://img.shields.io/badge/Express.js-4.x-lightgrey?logo=express)](https://expressjs.com/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-6.x-green?logo=mongodb)](https://www.mongodb.com/)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![API Status](https://img.shields.io/badge/API-Live-brightgreen)](/)
+[![Swagger](https://img.shields.io/badge/Swagger-OpenAPI%203.0-orange?logo=swagger)](https://swagger.io/)
+[![License](https://img.shields.io/badge/License-ISC-blue.svg)](LICENSE)
+[![API Version](https://img.shields.io/badge/API%20Version-1.0.5-blue)]()
+[![API Status](https://img.shields.io/badge/API-Live-brightgreen)](http://worldcup26.ir:3050)
 
-> 🏆 **Complete REST API for FIFA World Cup 2026** - United States, Mexico & Canada
+> 🏆 **The first-ever 48-team FIFA World Cup — Full REST API with live scores, 104 matches, 16 stadiums, 12 groups, and real-time updates.**
 
-A comprehensive REST API providing real-time data for the **2026 FIFA World Cup**, the first World Cup featuring **48 teams** across **12 groups**. Get access to teams, groups, matches, stadiums, and **live scores** during the tournament.
+A comprehensive, open-source REST API providing real-time data for the **2026 FIFA World Cup**, hosted across **United States 🇺🇸, Mexico 🇲🇽 & Canada 🇨🇦**. Access teams, groups, matches, stadiums, live scores, and standings — perfect for developers building World Cup apps, dashboards, widgets, and bots.
+
+---
+
+## 📑 Table of Contents
+
+- [Key Features](#-key-features)
+- [Tournament Information](#-tournament-information)
+- [Technologies](#️-technologies)
+- [Getting Started](#-getting-started)
+- [Data Import](#-data-import)
+- [Swagger API Documentation](#-swagger-api-documentation)
+- [API Endpoints](#-api-endpoints)
+- [Live Score Updates](#-live-score-updates)
+- [World Cup 2026 Groups](#-world-cup-2026-groups)
+- [Host Stadiums](#️-host-stadiums)
+- [Response Codes](#-response-codes)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Contact & Support](#-contact--support)
 
 ---
 
 ## 🌟 Key Features
 
-- 🔴 **Live Match Updates** - Real-time scores updated during matches
-- 🏟️ **16 Host Stadiums** - Complete venue information across 3 countries
-- 👥 **48 National Teams** - All qualified teams with details
-- 📊 **12 Groups (A-L)** - Full group stage standings
-- 📅 **104 Matches** - From group stage to the final
-- 🌍 **Multi-language Support** - English & Persian (Farsi) data
+- 🔴 **Live Match Updates** — Real-time scores updated during matches
+- 🏟️ **16 Host Stadiums** — Complete venue information across 3 countries
+- 👥 **48 National Teams** — All qualified teams with full details
+- 📊 **12 Groups (A-L)** — Full group stage standings with auto-update
+- 📅 **104 Matches** — From group stage to the grand final
+- 🌍 **Multi-language Support** — English & Persian (Farsi) data
+- 📖 **Swagger UI** — Interactive API documentation with try-it-out
+- 🔒 **JWT Authentication** — Secure access with token-based auth
+- ⚡ **Rate Limiting** — Built-in rate limiter for fair usage
+- 🗜️ **Compression & Helmet** — Optimized & secure responses
 
 ---
 
@@ -26,22 +55,28 @@ A comprehensive REST API providing real-time data for the **2026 FIFA World Cup*
 
 | Info | Details |
 |------|---------|
-| **Tournament** | FIFA World Cup 2026 |
+| **Tournament** | FIFA World Cup 2026™ |
 | **Host Countries** | 🇺🇸 United States, 🇲🇽 Mexico, 🇨🇦 Canada |
 | **Teams** | 48 (expanded from 32) |
 | **Groups** | 12 (A through L) |
-| **Matches** | 104 total |
-| **Opening Match** | June 11, 2026 - Mexico City |
-| **Final** | July 19, 2026 - New Jersey |
+| **Total Matches** | 104 |
+| **Opening Match** | June 11, 2026 — Mexico City 🇲🇽 |
+| **Final** | July 19, 2026 — New Jersey 🇺🇸 |
 
 ---
 
 ## 🛠️ Technologies
 
-- **Runtime:** [Node.js](https://nodejs.org/)
-- **Database:** [MongoDB](https://www.mongodb.com/)
-- **Framework:** Express.js
-- **Authentication:** JWT Token
+| Technology | Purpose |
+|-----------|---------|
+| [Node.js](https://nodejs.org/) | Runtime environment |
+| [Express.js](https://expressjs.com/) | Web framework |
+| [MongoDB](https://www.mongodb.com/) | Database |
+| [Mongoose](https://mongoosejs.com/) | ODM for MongoDB |
+| [JWT](https://jwt.io/) | Authentication |
+| [Swagger/OpenAPI 3.0](https://swagger.io/) | API Documentation |
+| [Helmet](https://helmetjs.github.io/) | Security headers |
+| [express-rate-limit](https://www.npmjs.com/package/express-rate-limit) | Rate limiting |
 
 ---
 
@@ -57,39 +92,148 @@ A comprehensive REST API providing real-time data for the **2026 FIFA World Cup*
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/api-world-cup-2026.git
+git clone https://github.com/rezarahiminia/worldcup2026.git
 
 # Navigate to project directory
-cd api-world-cup-2026
+cd worldcup2026
 
 # Install dependencies
 npm install
 
 # Set up environment variables
-cp .env.example .env
+cp .env.example .env.development
 
-# Start the server
-npm start
+# Start development server
+npm run dev
+
+# Or start production server
+npm run prod
 ```
 
 ### Environment Variables
 
+Create a `.env.development` or `.env.production` file:
+
 ```env
-PORT=3000
-MONGODB_URI=your_mongodb_connection_string
+NODE_ENV=development
+PORT=3050
+MONGODB_URL=mongodb://localhost:27017/worldcup2026
 JWT_SECRET=your_jwt_secret_key
+SECRET=your_secret_key
+ENABLE_SWAGGER=true
+RATE_LIMIT_WINDOW=60000
+RATE_LIMIT_MAX=500
+CORS_ORIGINS=*
 ```
+
+### NPM Scripts
+
+| Script | Command | Description |
+|--------|---------|-------------|
+| `npm start` | `node index.js` | Start server |
+| `npm run dev` | `nodemon index.js` | Development mode with hot-reload |
+| `npm run prod` | `node index.js` | Production mode |
+| `npm run import:all` | — | Import all data (groups, teams, stadiums, matches) |
 
 ---
 
-## 📖 API Documentation
+## 📥 Data Import
+
+The API comes with CSV data files and import scripts to populate your MongoDB database. You **must** import data before using the API.
+
+### Quick Import (All Data at Once)
+
+```bash
+# Import everything: groups, teams, stadiums, and matches
+npm run import:all
+```
+
+### Step-by-Step Import
+
+Import data in this specific order (dependencies matter):
+
+```bash
+# Step 1: Import 12 Groups (A-L)
+npm run import:groups
+
+# Step 2: Import 48 Teams
+npm run import:teams
+
+# Step 3: Import 16 Stadiums
+npm run import:stadiums
+
+# Step 4: Import 104 Matches
+npm run import:matches
+```
+
+### Alternative: Using Node Directly
+
+```bash
+# Import all at once with the import-all script
+node import-all.js
+
+# Or individually:
+node import-groups.js
+node import-teams.js
+node import-stadiums.js
+node import-matches.js
+```
+
+### Data Source Files (CSV)
+
+| File | Description | Records |
+|------|-------------|---------|
+| `worldcup2026.groups.csv` | Group definitions (A-L) | 12 |
+| `worldcup2026.teams.csv` | All qualified national teams | 48 |
+| `worldcup2026.stadia.csv` | Host stadiums across 3 countries | 16 |
+| `worldcup2026.games.csv` | All tournament matches | 104 |
+
+### JSON Data Files
+
+Pre-formatted MongoDB-ready JSON files are also available:
+
+| File | Description |
+|------|-------------|
+| `football.teams.json` | Teams collection |
+| `football.matches.json` | Matches collection |
+| `football.matchtables.json` | Group standings |
+| `football.stadiums.json` | Stadiums collection |
+
+> ⚠️ **Note:** Make sure MongoDB is running before importing. The import scripts will connect using the `MONGODB_URL` from your environment configuration.
+
+---
+
+## 📖 Swagger API Documentation
+
+This API includes full **interactive Swagger UI** documentation powered by OpenAPI 3.0.
+
+| Info | Details |
+|------|---------|
+| **Swagger Version** | OpenAPI 3.0 (`swagger-jsdoc` 6.x + `swagger-ui-express` 5.x) |
+| **API Version** | 1.0.5 |
+| **Dev URL** | [http://localhost:3050/api-docs/](http://localhost:3050/api-docs/) |
+| **Production URL** | [http://worldcup26.ir:3050/api-docs/](http://worldcup26.ir:3050/api-docs/) |
+| **Production (HTTPS)** | [https://worldcup26.ir/api-docs/](https://worldcup26.ir/api-docs/) |
+
+### How to Use Swagger UI
+
+1. Start the server (`npm run dev` or `npm run prod`)
+2. Open your browser and go to `/api-docs/`
+3. Click **Authorize** 🔒 and enter your JWT token
+4. Try out any endpoint directly from the browser
+
+> 💡 **Tip:** Swagger is enabled by default in development mode. In production, set `ENABLE_SWAGGER=true` in your `.env.production` file.
+
+---
+
+## 📖 API Endpoints
 
 ### 🔐 Authentication
 
 All endpoints (except auth routes) require a valid JWT token in the Authorization header.
 
 ```http
-Authorization: Bearer ${YOUR_TOKEN}
+Authorization: Bearer YOUR_TOKEN
 ```
 
 ---
@@ -183,7 +327,7 @@ After successful login/registration, use the returned token for all API requests
 
 ```javascript
 // Example using fetch
-fetch('https://api.example.com/get/teams', {
+fetch('https://worldcup26.ir/get/teams', {
   headers: {
     'Authorization': 'Bearer YOUR_JWT_TOKEN'
   }
@@ -193,7 +337,7 @@ fetch('https://api.example.com/get/teams', {
 ```bash
 # Example using cURL
 curl -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  https://api.example.com/get/teams
+  https://worldcup26.ir/get/teams
 ```
 
 > ⏰ **Token Expiry:** Tokens are valid for **84 days** (7,257,600 seconds). After expiration, you'll need to login again.
@@ -355,7 +499,7 @@ Returns all 16 host stadiums.
 
 ## 🔴 Live Score Updates
 
-> **⚡ During the FIFA World Cup 2026 tournament (June 11 - July 19, 2026), match scores and statistics will be updated in real-time!**
+> **⚡ During the FIFA World Cup 2026 tournament (June 11 — July 19, 2026), match scores and statistics will be updated in real-time!**
 
 ### Live Data Includes:
 - ✅ Current match scores
@@ -427,11 +571,12 @@ Returns all 16 host stadiums.
 
 | Code | Description |
 |------|-------------|
-| `200` | Success |
-| `400` | Bad Request |
-| `401` | Unauthorized - Invalid or missing token |
-| `404` | Resource not found |
-| `500` | Internal Server Error |
+| `200` | ✅ Success |
+| `400` | ❌ Bad Request — Invalid parameters |
+| `401` | 🔒 Unauthorized — Invalid or missing JWT token |
+| `404` | 🔍 Resource not found |
+| `429` | ⏱️ Too many requests — Rate limit exceeded |
+| `500` | 💥 Internal Server Error |
 
 ---
 
@@ -449,14 +594,15 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the ISC License — see the [LICENSE](LICENSE) file for details.
 
 ---
 
 ## 🔗 Related Links
 
-- [FIFA Official Website](https://www.fifa.com/fifaplus/en/tournaments/mens/worldcup/canadamexicousa2026)
-- [World Cup 2026 Official](https://www.fifa.com/worldcup/)
+- 🌐 [FIFA Official Website](https://www.fifa.com/fifaplus/en/tournaments/mens/worldcup/canadamexicousa2026)
+- 🏆 [World Cup 2026 Official](https://www.fifa.com/worldcup/)
+- 📖 [API Swagger Docs](http://worldcup26.ir:3050/api-docs/)
 
 ---
 
@@ -464,6 +610,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For questions, issues, or suggestions, please open an issue on GitHub.
 
+⭐ **Star this repo** if you find it useful!
+
 ---
 
-**Keywords:** FIFA World Cup 2026 API, World Cup API, Soccer API, Football API, FIFA API, World Cup 2026 Data, Live Soccer Scores, World Cup Live Scores, REST API Football, Node.js Football API, 2026 World Cup Teams, World Cup Groups, World Cup Matches, World Cup Stadiums, USA Mexico Canada World Cup
+<p align="center">
+  <b>Keywords:</b> FIFA World Cup 2026 API, World Cup REST API, Soccer API, Football API, FIFA API, World Cup 2026 Data, Live Soccer Scores, World Cup Live Scores API, Node.js Football API, Express.js Sports API, MongoDB Sports Database, 2026 World Cup Teams API, World Cup Groups API, World Cup Matches API, World Cup Stadiums API, USA Mexico Canada World Cup, 48 Team World Cup, OpenAPI Football, Swagger Sports API, Free World Cup API, Open Source Football API, Real-time Soccer Scores, JWT Authentication API, World Cup 2026 Developer API
+</p>

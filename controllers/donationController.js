@@ -38,8 +38,10 @@ module.exports = (app) => {
      * @swagger
      * /donate/create:
      *   post:
-     *     summary: Create a new donation payment
+     *     summary: Create a new crypto donation
+     *     description: Creates a payment via NOWPayments gateway. Users can donate 1-100 USD using USDT (TRC20).
      *     tags: [Donation]
+     *     security: []
      *     requestBody:
      *       required: true
      *       content:
@@ -54,19 +56,45 @@ module.exports = (app) => {
      *                 minimum: 1
      *                 maximum: 100
      *                 description: Donation amount in USD
+     *                 example: 10
      *               donor_name:
      *                 type: string
+     *                 description: Donor name (optional)
+     *                 example: "John Doe"
      *               donor_email:
      *                 type: string
+     *                 format: email
+     *                 description: Donor email (optional)
      *               message:
      *                 type: string
+     *                 description: Donor message (optional)
      *     responses:
      *       200:
      *         description: Payment created successfully
+     *         content:
+     *           application/json:
+     *             schema:
+     *               type: object
+     *               properties:
+     *                 success:
+     *                   type: boolean
+     *                 payment_id:
+     *                   type: string
+     *                 pay_address:
+     *                   type: string
+     *                   description: Wallet address to send USDT to
+     *                 pay_amount:
+     *                   type: number
+     *                 pay_currency:
+     *                   type: string
+     *                 order_id:
+     *                   type: string
+     *                 expires_at:
+     *                   type: string
      *       400:
-     *         description: Invalid amount
+     *         description: Invalid amount (must be 1-100 USD)
      *       500:
-     *         description: Server error
+     *         description: Payment gateway error
      */
     app.post('/donate/create', async (req, res) => {
         try {
@@ -178,11 +206,16 @@ module.exports = (app) => {
      * /donate/ipn:
      *   post:
      *     summary: IPN Callback from NOWPayments
+     *     description: Receives payment status updates from NOWPayments. Do not call this endpoint manually.
      *     tags: [Donation]
-     *     description: This endpoint receives payment status updates from NOWPayments
+     *     security: []
      *     responses:
      *       200:
-     *         description: IPN processed
+     *         description: IPN processed successfully
+     *       400:
+     *         description: Invalid signature
+     *       404:
+     *         description: Donation not found
      */
     app.post('/donate/ipn', async (req, res) => {
         try {
@@ -235,17 +268,20 @@ module.exports = (app) => {
      * @swagger
      * /donate/status/{orderId}:
      *   get:
-     *     summary: Check donation status
+     *     summary: Check donation payment status
+     *     description: Returns the current status of a donation by order ID
      *     tags: [Donation]
+     *     security: []
      *     parameters:
      *       - in: path
      *         name: orderId
      *         required: true
      *         schema:
      *           type: string
+     *         description: The donation order ID (e.g. DON-1234567890-ABCDEFG)
      *     responses:
      *       200:
-     *         description: Donation status
+     *         description: Donation status returned
      *       404:
      *         description: Donation not found
      */
@@ -287,10 +323,39 @@ module.exports = (app) => {
      * /donate/recent:
      *   get:
      *     summary: Get recent successful donations
+     *     description: Returns the 10 most recent confirmed donations and total stats
      *     tags: [Donation]
+     *     security: []
      *     responses:
      *       200:
-     *         description: List of recent donations
+     *         description: List of recent donations with stats
+     *         content:
+     *           application/json:
+     *             schema:
+     *               type: object
+     *               properties:
+     *                 success:
+     *                   type: boolean
+     *                 donations:
+     *                   type: array
+     *                   items:
+     *                     type: object
+     *                     properties:
+     *                       name:
+     *                         type: string
+     *                       amount:
+     *                         type: number
+     *                       message:
+     *                         type: string
+     *                       date:
+     *                         type: string
+     *                 stats:
+     *                   type: object
+     *                   properties:
+     *                     total_amount:
+     *                       type: number
+     *                     total_donations:
+     *                       type: number
      */
     app.get('/donate/recent', async (req, res) => {
         try {
@@ -336,11 +401,37 @@ module.exports = (app) => {
      * @swagger
      * /donate/currencies:
      *   get:
-     *     summary: Get available currencies (for future expansion)
+     *     summary: Get available donation currencies
+     *     description: Returns the list of supported cryptocurrencies for donations
      *     tags: [Donation]
+     *     security: []
      *     responses:
      *       200:
-     *         description: Available currencies
+     *         description: Available currencies list
+     *         content:
+     *           application/json:
+     *             schema:
+     *               type: object
+     *               properties:
+     *                 success:
+     *                   type: boolean
+     *                 currencies:
+     *                   type: array
+     *                   items:
+     *                     type: object
+     *                     properties:
+     *                       code:
+     *                         type: string
+     *                         example: usdttrc20
+     *                       name:
+     *                         type: string
+     *                         example: USDT (TRC20)
+     *                       network:
+     *                         type: string
+     *                         example: TRON
+     *                       min_amount:
+     *                         type: number
+     *                         example: 1
      */
     app.get('/donate/currencies', async (req, res) => {
         // For now, we only support USDT-TRC20

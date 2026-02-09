@@ -9,7 +9,7 @@ function loadEnvConfig() {
   if (configLoaded) return config;
 
   // تعیین محیط اجرا 
-  const NODE_ENV = process.env.NODE_ENV || 'development';
+  const NODE_ENV = (process.env.NODE_ENV || 'development').trim();
 
   // بارگذاری فایل env مناسب
   const envFile = NODE_ENV === 'production' ? '.env.production' : '.env.development';
